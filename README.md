@@ -1,4 +1,4 @@
 impost
 ======
 
-ImageBoard
+ImageBoard created on Meteor
