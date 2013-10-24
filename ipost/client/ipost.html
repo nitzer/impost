@@ -1,0 +1,116 @@
+<head>
+	<title>impost</title>
+</head>
+
+<body>
+	{{>navbar}}
+	<div class="container">
+		<div class="row">
+			<div class='span2'></div>
+			<div class='span8'>
+				{{renderPage}}
+			</div>
+			<div class='span2'></div>
+		</div>
+	</div>
+</body>
+
+<template name="index">
+	{{> PostsCollection}}
+</template>
+
+<template name="PostsCollection">
+	{{#each posts}}
+		<div class="media">
+			<a class="pull-left" href="#">
+				<img class="media-object" src="http://placehold.it/64x64" alt="64x64" style="width: 64px; height: 64px;">
+			</a>
+			<div class="media-body">
+				<h4 class="media-heading">
+					<a href="/post/{{_id}}">{{title}}</a>
+				</h4>
+				{{{content}}}
+				{{#each comments}}
+				<div class="media">
+					<a class="pull-left" href="#">
+						<img class="media-object" src="http://placehold.it/64x64" alt="64x64" style="width: 64px; height: 64px;">
+					</a>
+					<div class="media-body">
+						<h4 class="media-heading">{{user}}</h4>
+						{{comment}}
+						{{#each replys}}
+						<div class="media">
+							<a class="pull-left" href="#">
+								<img class="media-object" src="http://placehold.it/64x64" alt="64x64" style="width: 64px; height: 64px;">
+							</a>
+							<div class="media-body">
+								<h4 class="media-heading">{{user}}</h4>
+								{{reply}}
+							</div>
+						</div>
+						{{/each}}
+
+					</div>
+				</div>
+				{{/each}}
+
+			</div>
+		</div>
+	{{/each}}
+
+</template>
+
+<template name="post">
+	{{#with post}}
+	<div class="media">
+		<a class="pull-left" href="#">
+			<img class="media-object" src="http://placehold.it/64x64" alt="64x64" style="width: 64px; height: 64px;">
+		</a>
+		<div class="media-body">
+			<h4 class="media-heading">{{title}}</h4>
+			{{{content}}}
+		</div>
+	</div>
+	{{/with}}
+</template>
+
+<template name="hello">
+</template>
+
+<template name="about">
+	<h2>About</h2>
+</template>
+
+
+<template name="contact">
+	<h2>Contact</h2>
+</template>
+
+<template name='not_found'>
+	Not found
+</template>
+
+<template name="navbar">
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="brand" href="#">ImagePost</a>
+				<div class="nav-collapse collapse">
+					<p class="navbar-text pull-right">
+						Logged in as <a href="#" class="navbar-link">Username</a>
+					</p>
+					<ul class="nav">
+						<li class="active"><a href="/">Home</a></li>
+						<li><a href="/about">About</a></li>
+						<li><a href="/contact">Contact</a></li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+</template>
